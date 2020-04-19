@@ -3,14 +3,14 @@ const router = express.Router();
 
 // @route   GET api/auth
 // @desc    Get logged in user
-//@access   Private
+// @access  Private
 router.get("/", (req, res) => {
   res.send("get logged in user");
 });
 
 // @route   POST api/auth
 // @desc    Auth user & get Token
-//@access   Public
+// @access  Public
 router.post("/", (req, res) => {
   res.send("log in user");
 });
