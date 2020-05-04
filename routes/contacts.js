@@ -32,10 +32,11 @@ router.post(
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-
+    //pull our variables from the request.body using a destructuring method
     const { name, email, phone, type } = req.body;
-
+    //Try Catch for error handling
     try {
+      //Generate a new contact from the Contact.js Model
       const newContact = new Contact({
         name,
         email,
@@ -43,10 +44,10 @@ router.post(
         type,
         user: req.user.id,
       });
-
+      //Create a variable that stores our New Contact using the Save Method
       const contact = await newContact.save();
-
-      ReadableStream.json(contact);
+      //post the result to our Server.
+      res.json(contact);
     } catch (error) {
       console.error(error.message);
       res.status(500).send("Server Error!");
